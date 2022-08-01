@@ -11,14 +11,14 @@ namespace GameLooneyToons
         public BugsBunny(string name, double attack, double speed, double health, double protection, string type = "Кролик")
                   : base(type, name, attack, speed, health, protection)
         {
-            Name = "Bugs Bunny";
-            Attack = 20;
-            Speed = 20;
-            Health = 100;
-            Protection = 10;
+            Name = "Bugs Bunny";  //Имя персонажа
+            Attack = 20;          //Сила атаки персонажа
+            Speed = 20;           //Скорость хода персонажа
+            Health = 100;         //Здоровье персонажа
+            Protection = 10;      //Защита персонажа
         }
 
-        internal override double Attack1(Person p, Person t)
+        internal override double Attack1(Person p, Person t)  //реализация кнопки атаки #1
         {
             if (p.udar == 1)
             {
@@ -33,22 +33,13 @@ namespace GameLooneyToons
             return t.Health;
         }
 
-        internal override double Attack2(Person p, Person t)
+        internal override double Attack2(Person p, Person t)   //реализация кнопки атаки #2
         {
             t.Health -= p.Attack + 5 - (p.Attack + 5) / 100 * t.Protection;
             return t.Health;
         }
 
-        internal override void ResultCheckHealth(Person t)
-        {
-            if (t.Health < 0)
-            { 
-                Console.ForegroundColor = ConsoleColor.Magenta;
-                Console.WriteLine($"Вы выйграли! {t.Name} побежден!");
-            }
-        }
-
-        internal override void NewStep(Person p, Person t)
+        internal override void NewStep(Person p, Person t)  //новый ход персонажа
         {
            if (p.HealthCheck(p) && t.HealthCheck(t))
            { 
@@ -75,6 +66,15 @@ namespace GameLooneyToons
               
               p.ResultCheckHealth(t);
            }
+        }
+
+        internal override void ResultCheckHealth(Person t)  //итог боя(победа)
+        {
+            if (t.Health < 0)
+            {
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.WriteLine($"Вы выйграли! {t.Name} побежден!");
+            }
         }
     }
 }

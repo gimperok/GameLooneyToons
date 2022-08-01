@@ -11,14 +11,14 @@ namespace GameLooneyToons
         public Enemy(string name, double attack, double speed, double health, double protection, string type = "Человек")
               : base(type, name, attack, speed, health, protection)
         {
-            Name = "Охотник";
-            Attack = 25;
-            Speed = 20;
-            Health = 100;
-            Protection = 10;
+            Name = "Охотник";  //Имя персонажа
+            Attack = 25;       //Сила атаки персонажа
+            Speed = 20;        //Скорость хода персонажа
+            Health = 100;      //Здоровье персонажа
+            Protection = 10;   //Защита персонажа
         }
 
-        internal override double Attack1(Person p, Person t)
+        internal override double Attack1(Person p, Person t)   //реализация кнопки атаки #1
         {
             if (t.udar == 1)
             {
@@ -33,13 +33,13 @@ namespace GameLooneyToons
             return p.Health;
         }
 
-        internal override double Attack2(Person p, Person t)
+        internal override double Attack2(Person p, Person t)   //реализация кнопки атаки #2
         {
             p.Health -= t.Attack + 5 - (t.Attack + 5) / 100 * p.Protection;
             return p.Health;
         }
 
-        internal override void NewStep(Person p, Person t)
+        internal override void NewStep(Person p, Person t)  //новый ход персонажа
         {
             if (p.HealthCheck(p) && t.HealthCheck(t))
             {
@@ -64,7 +64,7 @@ namespace GameLooneyToons
             }
         }
 
-        internal override void ResultCheckHealth(Person p)
+        internal override void ResultCheckHealth(Person p)  //итог боя(проигрыш)
         {
             if (p.Health < 0)
             {

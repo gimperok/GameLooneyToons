@@ -26,20 +26,20 @@ namespace GameLooneyToons
         }
         internal int udar = 1;
         protected string tipUdara = "";
-        internal abstract double Attack1(Person p, Person t);
-        internal abstract double Attack2(Person p, Person t);
-        internal abstract void ResultCheckHealth(Person p);
-        internal abstract void NewStep(Person p, Person t);
+        internal abstract double Attack1(Person p, Person t);  //кнопка атаки #1
+        internal abstract double Attack2(Person p, Person t);  //кнопка атаки #2
+        internal abstract void ResultCheckHealth(Person p);   //итог боя(победа/проигрыш)
+        internal abstract void NewStep(Person p, Person t);   //новый ход персонажа
 
 
-        internal bool HealthCheck(Person p)
+        internal bool HealthCheck(Person p)  //проверка жив ли персонаж
         {
             if (p.Health > 0)
                  return true;
             else return false;
         }
 
-        internal void ShowHealth(Person p)
+        internal void ShowHealth(Person p)  //шкала здоровья персонажа
         {
             if (p.Health <= 100 && p.Health >= 81)
             {
